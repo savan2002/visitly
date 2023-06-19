@@ -1,0 +1,5 @@
+{
+  "prodUrl": "https://api.visitly.io/v1",
+  "stageUrl": "https://it4rqn6gqk.execute-api.us-west-2.amazonaws.com/v1",
+  "devUrl": "https://3vza0x99ll.execute-api.us-west-2.amazonaws.com/development/v1"
+}

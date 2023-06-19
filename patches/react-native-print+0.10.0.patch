@@ -1,0 +1,37 @@
+diff --git a/node_modules/react-native-print/ios/.DS_Store b/node_modules/react-native-print/ios/.DS_Store
+new file mode 100644
+index 0000000..cfe66cd
+Binary files /dev/null and b/node_modules/react-native-print/ios/.DS_Store differ
+diff --git a/node_modules/react-native-print/ios/RNPrint/RNPrint.h b/node_modules/react-native-print/ios/RNPrint/RNPrint.h
+index 3e7a09c..04e36e7 100644
+--- a/node_modules/react-native-print/ios/RNPrint/RNPrint.h
++++ b/node_modules/react-native-print/ios/RNPrint/RNPrint.h
+@@ -11,4 +11,5 @@
+ @property NSString *htmlString;
+ @property NSURL *printerURL;
+ @property (nonatomic, assign) BOOL isLandscape;
++@property (nonatomic,retain) NSMutableDictionary<NSURL*,UIPrinter*> *lastPrinterUsed;
+ @end
+diff --git a/node_modules/react-native-print/ios/RNPrint/RNPrint.m b/node_modules/react-native-print/ios/RNPrint/RNPrint.m
+index 0c41822..a65d55d 100644
+--- a/node_modules/react-native-print/ios/RNPrint/RNPrint.m
++++ b/node_modules/react-native-print/ios/RNPrint/RNPrint.m
+@@ -88,7 +88,18 @@ -(void)launchPrint:(NSData *) data
+     
+     if (options[@"printerURL"]){
+         _printerURL = [NSURL URLWithString:[RCTConvert NSString:options[@"printerURL"]]];
++        if (!self.lastPrinterUsed) {
++            self.lastPrinterUsed = [[NSMutableDictionary alloc] init];
++        }
++        if (! [self.lastPrinterUsed objectForKey:_printerURL]) {
+         _pickedPrinter = [UIPrinter printerWithURL:_printerURL];
++        [self.lastPrinterUsed setObject:_pickedPrinter forKey:_printerURL];
++        NSLog(@"%@", self.lastPrinterUsed);
++        }  else {
++        _pickedPrinter = [self.lastPrinterUsed objectForKey:_printerURL];
++        NSLog(@"Something To Print else");
++    }
++        // _pickedPrinter = [UIPrinter printerWithURL:_printerURL];
+     }
+     
+     if(options[@"isLandscape"]) {

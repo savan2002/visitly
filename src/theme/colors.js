@@ -1,0 +1,19 @@
+export const color = {
+    white:'#FFFFFF',
+    black:'#000000',
+    bright_Turquoise:'#0BDBDB',
+    silver:'#BBBBBB',
+    tundora:'#444444',
+    concrete:'#F2F2F2',
+    cod_gray:'#111111',
+    boulder:'#777777',
+    royal_blue:'#5E2CED',
+    moon_raker:"#DCD2F9",
+    bright_gray:'#3C4049',
+    red:'#E8272A',
+    lightRed:'#FCBDA8',
+    darkRed:'#A7132F',
+    gainsboro:'#DADADA',
+    spanishGray:'#969696',
+    lightSilver:"#D9D9D9"
+};
